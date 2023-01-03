@@ -1,0 +1,57 @@
+ <!-- Registration Start -->
+ <div class="container-fluid bg-registration py-5" style="margin: 90px 0;">
+    <div class="container py-5">
+        <div class="row align-items-center">
+            <div class="col-lg-7 mb-5 mb-lg-0">
+                <div class="mb-4">
+                    <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Mega Offer</h6>
+                    <h1 class="text-white"><span class="text-primary">30% OFF</span> For Honeymoon</h1>
+                </div>
+                <p class="text-white">Invidunt lorem justo sanctus clita. Erat lorem labore ea, justo dolor lorem ipsum ut sed eos,
+                    ipsum et dolor kasd sit ea justo. Erat justo sed sed diam. Ea et erat ut sed diam sea ipsum est
+                    dolor</p>
+                <ul class="list-inline text-white m-0">
+                    <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Labore eos amet dolor amet diam</li>
+                    <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Etsea et sit dolor amet ipsum</li>
+                    <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Diam dolor diam elitripsum vero.</li>
+                </ul>
+            </div>
+            <div class="col-lg-5">
+                <div class="card border-0">
+                    <div class="card-header bg-primary text-center p-4">
+                        <h1 class="text-white m-0">Sign Up Now</h1>
+                    </div>
+                    <div class="card-body rounded-bottom bg-white p-5">
+                        <form  [formGroup]="registrationForm"
+                        (submit)="onSubmit()">
+                            <div class="form-group">
+                                <input type="text" formControlName="username" class="form-control p-4" placeholder="Nom utilisateur" required="required" />
+                                <span *ngIf="registrationForm?.get('username')?.touched && registrationForm?.get('username')?.invalid" style="color: red;">Le nom utilisateur est requis</span>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control p-4" formControlName="email" placeholder="Email" required="required" />
+                                <span *ngIf="registrationForm?.get('email')?.touched && registrationForm?.get('email')?.invalid" style="color: red;">L'email est requis</span>
+
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control p-4" formControlName="pwd" placeholder="Mot de passe" required="required" />
+                                <span *ngIf="registrationForm?.get('pwd')?.touched && registrationForm?.get('pwd')?.invalid" style="color: red;">Le mot de passe est requis</span>
+                                <span style="color: red;">Le mot de passe doit commencer par un chiffre et contenir des caractères alphanumériques, pas de caractère spéciaux</span>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control p-4" formControlName="pwdconf" placeholder="Confirmation mot de passe" required="required" />
+                                <span *ngIf="registrationForm?.get('pwdconf')?.touched && registrationForm?.get('pwdconf')?.invalid" style="color: red;">La confirmation de mot de passe est requise</span>
+                                <span *ngIf="registrationForm?.get('pwdconf')?.hasError('matching')">Les mots de passe ne correspondent pas</span>
+
+                            </div>                            
+                            <div>
+                                <button class="btn btn-primary btn-block py-3" type="submit" [disabled]="registrationForm.invalid" >Enregistrer</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Registration End -->

@@ -9,6 +9,9 @@ import { HotelBookingComponent } from './hotel-booking/hotel-booking.component';
 import { SharedModule } from '../shared/shared.module';
 import { DatePickerSearchComponent } from '../shared/components/date-picker-search/date-picker-search.component';
 import { TravelBookingComponent } from './travel-booking/travel-booking.component';
+import { RegistrationComponent } from './registration/registration.component';
+import { LoginComponent } from './login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -19,13 +22,16 @@ import { TravelBookingComponent } from './travel-booking/travel-booking.componen
     ServicesComponent,
     TicketBookingComponent,
     HotelBookingComponent,
-    TravelBookingComponent
+    TravelBookingComponent,
+    RegistrationComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,
     WebSiteRoutingModule,
     SharedModule,
     DatePickerSearchComponent,
+    ReactiveFormsModule
   ]
 })
 export class WebsiteModule { }

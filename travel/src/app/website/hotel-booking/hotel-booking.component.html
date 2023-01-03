@@ -20,13 +20,19 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="mb-3 mb-md-0">
-                                <select class="custom-select px-4" style="height: 47px;">
+                                <select class="custom-select px-4" style="height: 47px;" #select>
                                     <option selected>Ville</option>
                                     <option *ngFor="let cityCode of cityCodes; let i = index" value="{{cityCode.code}}">{{cityCode.libelle}}</option>
                                 </select>
                             </div>
                         </div>
-                        <app-date-picker-search (fromDateEvent)="getFromDate($event)" (toDateEvent)="getToDate($event)" class="col-md-9"></app-date-picker-search>
+                        <app-date-picker-search (fromDateEvent)="getFromDate($event)" (toDateEvent)="getToDate($event)" class="col-md-6"></app-date-picker-search>
+                        <div class="col-md-3">
+                            <div class="mb-3 mb-md-0">
+                                    <span>Nombre de personnes</span>
+                                    <input type="number" #box value=""/>
+                            </div>
+                        </div>
                         <!-- TODO FAIRE DES CLASSES CSS POUR CES CHAMPS-->
                         <div class="col-md-4">
                             <div class="mb-3" style="margin-top: 15%;text-align: center;">
@@ -38,7 +44,30 @@
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <button class="btn btn-primary btn-block" (click)="search()" type="button" style="height: 47px; margin-top: -2px;">Envoyer</button>
+                    <button class="btn btn-primary btn-block" (click)="search(box.value,select.value)" type="button" style="height: 47px; margin-top: -2px;">Envoyer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container pt-5 pb-3">
+       <div class="row">
+            <div *ngFor="let hotel of hotels; let i = index" class="col-lg-4 col-md-6 mb-4">
+                <div class="package-item bg-white mb-2">
+                    <img class="img-fluid" src="img/package-1.jpg" alt="">
+                    <div class="p-4">
+                        <div class="d-flex justify-content-between mb-3">
+                            <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>{{hotel.name}}</small>
+                            <!--<small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>3 days</small>-->
+                            <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>{{hotel.offers[0].guests}} Personne(s)</small>
+                        </div>
+                        <a class="h5 text-decoration-none" href="">Discover amazing places of the world with us</a>
+                        <div class="border-top mt-4 pt-4">
+                            <div class="d-flex justify-content-between">
+                                <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5 <small>(250)</small></h6>
+                                <h5 class="m-0">{{hotel.offers[0].price.currency}} {{hotel.offers[0].price.total}}</h5>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
