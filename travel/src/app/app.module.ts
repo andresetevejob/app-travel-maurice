@@ -7,14 +7,18 @@ import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MenuComponent } from './layout/menu/menu/menu.component';
+import { UserInfoComponent } from './layout/user-info/user-info.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent
-  ],
+    FooterComponent,
+    MenuComponent,
+    UserInfoComponent
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,

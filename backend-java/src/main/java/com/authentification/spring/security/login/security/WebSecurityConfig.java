@@ -44,10 +44,8 @@ public class WebSecurityConfig {
   @Bean
   public DaoAuthenticationProvider authenticationProvider() {
       DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-      
       authProvider.setUserDetailsService(userDetailsService);
       authProvider.setPasswordEncoder(passwordEncoder());
-  
       return authProvider;
   }
 
@@ -69,9 +67,7 @@ public class WebSecurityConfig {
         .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
         .authorizeRequests()
         .antMatchers("/api/selfcare/").authenticated()
-        .antMatchers("/api/**").permitAll();
-        //.anyRequest().authenticated();
-   
+        .antMatchers("/api/**").permitAll();   
     http.authenticationProvider(authenticationProvider());
  
     http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);

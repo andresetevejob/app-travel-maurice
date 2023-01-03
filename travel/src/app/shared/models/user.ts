@@ -1,5 +1,7 @@
-export interface SignUpRequest{
+export interface user{
     username:string;
-    email:string;
     password:string;
+}
+export interface SignUpRequest extends user{
+    email:string;
 }

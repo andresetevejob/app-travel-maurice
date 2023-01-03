@@ -1,0 +1,8 @@
+    <div class="navbar-nav ml-auto py-0">
+        <a [routerLink]="['']" class="nav-item nav-link active">Accueil</a>
+        <a *ngIf="!isLoggedIn" [routerLink]="['/services/registration']" class="nav-item nav-link">Inscription</a>
+        <a *ngIf="!isLoggedIn" [routerLink]="['/services/signin']" class="nav-item nav-link">Connexion</a>
+        <a href="contact.html" class="nav-item nav-link">Contact</a>
+    </div>
+
+    

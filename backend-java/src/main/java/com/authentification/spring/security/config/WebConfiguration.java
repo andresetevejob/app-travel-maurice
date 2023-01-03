@@ -25,6 +25,7 @@ public class WebConfiguration {
                 registry.addMapping("/**")
                         .allowedOrigins(cors.getAllowedOrigins())
                         .allowedMethods(cors.getAllowedMethods())
+                        .allowCredentials(true)
                         .maxAge(cors.getMaxAge())
                         .allowedHeaders(cors.getAllowedHeaders())
                         .exposedHeaders(cors.getExposedHeaders());

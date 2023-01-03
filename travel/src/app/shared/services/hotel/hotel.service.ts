@@ -16,7 +16,7 @@ export class HotelService {
     var queryString = Object.keys(hotelSearchRequest).map((key) => {
       return encodeURIComponent(key) + '=' + encodeURIComponent((hotelSearchRequest as any)[key])
     }).join('&');
-    return this.http.get<Hotel[]>(`${this.API_URL}/hotel/search?${queryString}`);
+    return this.http.get<Hotel[]>(`${this.API_URL}/hotel/search?${queryString}`,{ withCredentials: true });
   }
 
 }

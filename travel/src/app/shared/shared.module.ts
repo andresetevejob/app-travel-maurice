@@ -8,7 +8,7 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
 
 @NgModule({
   declarations: [
-    CustomPriceSliderComponent
+    CustomPriceSliderComponent,
   ],
   exports: [CustomPriceSliderComponent],
   imports: [
