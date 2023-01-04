@@ -20,7 +20,7 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="mb-3 mb-md-0">
-                            <select class="custom-select px-4" style="height: 47px;">
+                            <select class="custom-select px-4" style="height: 47px;" #dept>
                                 <option selected>Depart</option>
                                 <option *ngFor="let cityCode of cityCodes; let i = index" value="{{cityCode.code}}">{{cityCode.libelle}}</option>
                             </select>
@@ -28,25 +28,25 @@
                     </div>
                     <div class="col-md-3">
                         <div class="mb-3 mb-md-0">
-                            <select class="custom-select px-4" style="height: 47px;">
+                            <select class="custom-select px-4" style="height: 47px;" #dest>
                                 <option selected>Destination</option>
                                 <option *ngFor="let cityCode of cityCodes; let i = index" value="{{cityCode.code}}">{{cityCode.libelle}}</option>
                             </select>
                         </div>
                     </div>
-                    <app-date-picker-search class="col-md-6"></app-date-picker-search>
+                    <app-date-picker-search (fromDateEvent)="getFromDate($event)" (toDateEvent)="getToDate($event)" class="col-md-6"></app-date-picker-search>
                     <!-- TODO FAIRE DES CLASSES CSS POUR CES CHAMPS-->
                     <div class="col-md-4">
                         <div class="mb-3" style="margin-top: 15%;text-align: center;">
                             <span>Budget</span>
                         </div>
                     </div>
-                    <app-custom-price-slider class="col-md-8" style="margin-top: 3%"></app-custom-price-slider>
+                    <app-custom-price-slider (minPriceEvent)="getPriceMin($event)" (maxPriceEvent)="getMaxPrice($event)" class="col-md-8" style="margin-top: 3%"></app-custom-price-slider>
                     
                 </div>
             </div>
             <div class="col-md-2">
-                <button class="btn btn-primary btn-block" type="submit" style="height: 47px; margin-top: -2px;">Envoyer</button>
+                <button class="btn btn-primary btn-block" (click)="search(dept.value,dest.value)" type="submit" style="height: 47px; margin-top: -2px;">Envoyer</button>
             </div>
         </div>
     </div>

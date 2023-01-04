@@ -4,6 +4,7 @@ import { cityCode } from 'src/app/shared/services/city-code/city-code';
 import { CityCodeService } from 'src/app/shared/services/city-code/city-code.service';
 import { Hotel, HotelSearchRequest } from 'src/app/shared/services/hotel/hotel-search-request';
 import { HotelService } from 'src/app/shared/services/hotel/hotel.service';
+import { dateToString } from 'src/app/shared/utils/date';
 
 
 @Component({
@@ -19,10 +20,8 @@ export class HotelBookingComponent implements OnInit{
   toDate:string;
   hotels!:Hotel[]
   constructor(private cityCodeService: CityCodeService,private hotelService:HotelService) { 
-    let d = new Date();
-    d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
-    this.fromDate =  d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
-    this.toDate =   d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
+    this.fromDate =  dateToString(new Date());
+    this.toDate =  dateToString(new Date());
   }
 
   ngOnInit(): void {
@@ -44,24 +43,16 @@ export class HotelBookingComponent implements OnInit{
   }
 
   getFromDate(fromDate:NgbDate){
-    console.log(fromDate);
-    this.fromDate = fromDate.year+"-"+fromDate.month+"-"+fromDate.day;
+    this.fromDate = dateToString(fromDate);
   }
   getToDate(toDate:NgbDate){
-    console.log(toDate);
-    this.toDate = toDate.year+"-"+toDate.month+"-"+toDate.day;
+    this.toDate = dateToString(toDate);
   }
 
-  search(v1:string,v2:string){
-    console.log(v1);
-    console.log(v2);
-    console.log(this.priceMin);
-    console.log(this.priceMax);
-    console.log(this.fromDate);
-    console.log(this.toDate);
+  search(guest:string,cityCode:string){
     const hotelSearchRequest:HotelSearchRequest={
-      cityCode: v2,
-      guests: Number(v1),
+      cityCode: cityCode,
+      guests: Number(guest),
       dateIn:this.fromDate,
       dateOut:this.toDate,
       priceMin:this.priceMin,
